@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <img src="https://ubuntuhandbook.org/wp-content/uploads/2018/09/lol-icon.png" alt="LoL logo" class="lol-logo" />
+    <ion-title>Champions</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Nouveau champion</h2>
+  <button ion-button (click)="onGoToCreate()">Création</button>
+
+  <h2>Liste de mes films</h2>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 col-sm-6 col-md-6 col-lg-3 col-xl-3 *ngFor="let champion of champions">
+        <ion-card (click)="onGoToFilm(champion.name, champion.id)">
+          <ion-card-header>
+            <img [src]="champion.image" [alt]="champion.name" />
+          </ion-card-header>
+
+          <ion-card-content>
+            <p>{{ champion.name }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -14,3 +14,29 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.toolbar-background {
+  background-color:  #0cbaba;
+  background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+}
+
+.toolbar-title, .toolbar-title-md {
+  color: white;
+}
+
+.toolbar-content {
+  display: flex;
+}
+
+.lol-logo {
+  height: 40px;
+  width: 40px;
+}
+
+.back-button {
+  color: white;
+}
+
+.back-button:hover {
+  color: white !important;
+}

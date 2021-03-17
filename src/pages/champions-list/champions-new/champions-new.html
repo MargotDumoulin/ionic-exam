@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <img src="https://ubuntuhandbook.org/wp-content/uploads/2018/09/lol-icon.png" alt="LoL logo" class="lol-logo" />
+    <ion-title>Création d'un champion</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Affiche</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.pictureLink"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Titre</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.title"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Pays</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.country"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Date</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.releaseDate"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Réalisateur</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.realisator"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Producteur</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.productor"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Musique</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.music"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Scénario</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.scenario"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Durée</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.time"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Au cinéma ?</ion-label>
+    <ion-toggle [(ngModel)]="champion.onAir"></ion-toggle>
+  </ion-item>
+  <ion-item>
+    <ion-label>Synopsis</ion-label>
+    <ion-textarea rows="20" [(ngModel)]="champion.synopsis"></ion-textarea>
+  </ion-item>
+  <br>
+  <div class="text-center">
+    <button ion-button (click)="onAdd()">Enregistrer</button>
+  </div>
+</ion-content>

@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-navbar>
+    <img src="https://ubuntuhandbook.org/wp-content/uploads/2018/09/lol-icon.png" alt="LoL logo" class="lol-logo" />
+    <ion-title>{{ title }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button (click)="onGoAccessUpdate()">Rendre modifiable</button>
+
+  <div *ngIf="!update">
+    <ion-grid *ngIf='champion'>
+      <ion-row>
+        <ion-col>
+          <strong>Au cinéma: </strong>
+          <ion-icon *ngIf="champion.isWomen" name="checkmark"></ion-icon>
+          <ion-icon *ngIf="!champion.isWomen" name="close-circle"></ion-icon>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-6>
+          <img [src]="champion.image" [alt]="champion.name" />
+        </ion-col>
+        <ion-col>
+          <button ion-button (click)="onSupp()"><ion-icon name="trash"></ion-icon></button><br />
+          <strong>Title :</strong><br/>
+          {{ champion.name }}<br/>
+          <strong>Pays :</strong><br/>
+          {{ champion.skillQ }}<br/>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <strong>Résumé: </strong><br />
+          <p class="text-justify">
+            {{ champion.name }}
+          </p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div *ngIf="update">
+    <ion-item>
+      <ion-label>Affiche</ion-label>
+      <ion-input type="text" [(ngModel)]="champion.data.pictureLink"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Titre</ion-label>
+      <ion-input type="text" [(ngModel)]="champion.data.title"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Pays</ion-label>
+      <ion-input type="text" [(ngModel)]="champion.data.country"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Date</ion-label>
+      <ion-input type="text" [(ngModel)]="champion.data.releaseDate"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Réalisateur</ion-label>
+      <ion-input type="text" [(ngModel)]="champion.data.realisator"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Producteur</ion-label>
+      <ion-input type="text" [(ngModel)]="champion.data.productor"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Musique</ion-label>
+      <ion-input type="text" [(ngModel)]="champion.data.music"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Scénario</ion-label>
+      <ion-input type="text" [(ngModel)]="champion.data.scenario"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Durée</ion-label>
+      <ion-input type="text" [(ngModel)]="champion.data.time"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Au cinéma ?</ion-label>
+      <ion-toggle type="text" [(ngModel)]="champion.data.onAir"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>Synopsis</ion-label>
+      <ion-textarea rows="20" [(ngModel)]="champion.data.synopsis"></ion-textarea>
+    </ion-item>
+    <br />
+    <div class="text-center">
+      <button ion-button (click)="onUpdate()">Modifier</button>
+    </div>
+  </div>
+
+</ion-content>
