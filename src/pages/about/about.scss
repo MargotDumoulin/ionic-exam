@@ -1,12 +1,16 @@
-.avatar {
-  height: 100%;
-  width: auto;
-}
+page-about {
+  .avatar {
+    height: 100%;
+    max-height: 250px;
+    width: 100%;
+    object-fit: cover;
+  }
 
-.custom-text {
-  margin-top: 0;
-  margin-left: 10px;
-  font-size: 16px;
-  text-justify: inter-word;
-  text-align: justify;
+  .custom-text {
+    margin-top: 0;
+    margin-left: 10px;
+    font-size: 16px;
+    text-justify: inter-word;
+    text-align: justify;
+  }
 }

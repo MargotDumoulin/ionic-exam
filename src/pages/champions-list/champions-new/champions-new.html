@@ -6,51 +6,58 @@
 </ion-header>
 
 <ion-content padding>
+  <ion-item class="item-error">
+    <ion-label>Nom</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.name"></ion-input>
+  </ion-item>
+  <div>
+    <div class="error-message">
+      {{'error'}}
+    </div>
+  </div>
   <ion-item>
-    <ion-label>Affiche</ion-label>
-    <ion-input type="text" [(ngModel)]="champion.pictureLink"></ion-input>
+    <ion-label>Age</ion-label>
+    <ion-input type="number" [(ngModel)]="champion.age"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label>Titre</ion-label>
-    <ion-input type="text" [(ngModel)]="champion.title"></ion-input>
+    <ion-label>Passif</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.passive"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label>Pays</ion-label>
-    <ion-input type="text" [(ngModel)]="champion.country"></ion-input>
+    <ion-label>Image</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.image"></ion-input>
+  </ion-item>
+
+  <ion-list radio-group>
+    <ion-item>
+      <ion-label>Homme</ion-label>
+      <ion-radio checked="true" value="false"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Femme</ion-label>
+      <ion-radio value="true"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label>Skill Q</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.skillQ"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label>Date</ion-label>
-    <ion-input type="text" [(ngModel)]="champion.releaseDate"></ion-input>
+    <ion-label>Skill W</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.skillW"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label>Réalisateur</ion-label>
-    <ion-input type="text" [(ngModel)]="champion.realisator"></ion-input>
+    <ion-label>Skill E</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.skillE"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label>Producteur</ion-label>
-    <ion-input type="text" [(ngModel)]="champion.productor"></ion-input>
+    <ion-label>Skill R</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.skillR"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label>Musique</ion-label>
-    <ion-input type="text" [(ngModel)]="champion.music"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Scénario</ion-label>
-    <ion-input type="text" [(ngModel)]="champion.scenario"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Durée</ion-label>
-    <ion-input type="text" [(ngModel)]="champion.time"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label>Au cinéma ?</ion-label>
-    <ion-toggle [(ngModel)]="champion.onAir"></ion-toggle>
-  </ion-item>
-  <ion-item>
-    <ion-label>Synopsis</ion-label>
-    <ion-textarea rows="20" [(ngModel)]="champion.synopsis"></ion-textarea>
-  </ion-item>
-  <br>
+
+  <br />
   <div class="text-center">
     <button ion-button (click)="onAdd()">Enregistrer</button>
   </div>
