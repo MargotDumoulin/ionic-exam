@@ -1,3 +1,4 @@
+import { AboutPage } from './../about/about';
 import { ChampionsListPage } from './../champions-list/champions-list';
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
@@ -12,6 +13,7 @@ export class TabPage {
 
   home = HomePage;
   champions = ChampionsListPage;
+  about = AboutPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

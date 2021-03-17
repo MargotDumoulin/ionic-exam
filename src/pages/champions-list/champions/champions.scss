@@ -1,3 +1,23 @@
-page-champions {
+.pink-icon {
+  color: purple;
+}
 
+.blue-icon {
+  color:#11a3aa;
+}
+
+.profile-image {
+  width: auto;
+  height: 250px;
+}
+
+.profile-custom-col {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+hr {
+  border-color: lightgrey;
+  border: 1px;
 }

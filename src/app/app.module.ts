@@ -1,3 +1,4 @@
+import { AboutPageModule } from './../pages/about/about.module';
 import { ChampionsNewPageModule } from './../pages/champions-list/champions-new/champions-new.module';
 import { ChampionsPageModule } from './../pages/champions-list/champions/champions.module';
 import { ChampionsListPageModule } from './../pages/champions-list/champions-list.module';
@@ -36,7 +37,8 @@ const firebase = {
     ChampionsPageModule,
     AngularFireModule.initializeApp(firebase),
     AngularFirestoreModule,
-    ChampionsNewPageModule
+    ChampionsNewPageModule,
+    AboutPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
