@@ -1,3 +1,5 @@
+import { ComponentsModule } from './../components/components.module';
+import { ChampionsFormComponent } from './../components/champions-form/champions-form';
 import { AboutPageModule } from './../pages/about/about.module';
 import { ChampionsNewPageModule } from './../pages/champions-list/champions-new/champions-new.module';
 import { ChampionsPageModule } from './../pages/champions-list/champions/champions.module';
@@ -27,7 +29,7 @@ const firebase = {
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -38,12 +40,13 @@ const firebase = {
     AngularFireModule.initializeApp(firebase),
     AngularFirestoreModule,
     ChampionsNewPageModule,
-    AboutPageModule
+    AboutPageModule,
+    ComponentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
+    HomePage
   ],
   providers: [
     StatusBar,

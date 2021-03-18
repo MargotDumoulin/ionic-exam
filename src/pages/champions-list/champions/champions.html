@@ -46,52 +46,9 @@
   </div>
 
   <div *ngIf="update">
-    <ion-item>
-      <ion-label>Affiche</ion-label>
-      <ion-input type="text" [(ngModel)]="champion.data.pictureLink"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Titre</ion-label>
-      <ion-input type="text" [(ngModel)]="champion.data.title"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Pays</ion-label>
-      <ion-input type="text" [(ngModel)]="champion.data.country"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Date</ion-label>
-      <ion-input type="text" [(ngModel)]="champion.data.releaseDate"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Réalisateur</ion-label>
-      <ion-input type="text" [(ngModel)]="champion.data.realisator"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Producteur</ion-label>
-      <ion-input type="text" [(ngModel)]="champion.data.productor"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Musique</ion-label>
-      <ion-input type="text" [(ngModel)]="champion.data.music"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Scénario</ion-label>
-      <ion-input type="text" [(ngModel)]="champion.data.scenario"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Durée</ion-label>
-      <ion-input type="text" [(ngModel)]="champion.data.time"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>Au cinéma ?</ion-label>
-      <ion-toggle type="text" [(ngModel)]="champion.data.onAir"></ion-toggle>
-    </ion-item>
-    <ion-item>
-      <ion-label>Synopsis</ion-label>
-      <ion-textarea rows="20" [(ngModel)]="champion.data.synopsis"></ion-textarea>
-    </ion-item>
+    <champions-form [champion]="champion" [errors]="errors"></champions-form>
     <br />
-    <div class="text-center">
+    <div class="confirm-button">
       <button ion-button (click)="onUpdate()">Modifier</button>
     </div>
   </div>

@@ -1,3 +1,4 @@
+import { Champion } from './../../app/types.d';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -40,7 +41,7 @@ export class ChampionsProvider {
     }
   }
 
-  saveNewChampion(champion: any) {
+  saveNewChampion(champion: Champion) {
     return new Observable(obs => {
       this.db.collection('champions').add(champion).then(() => {
         console.log('success');
@@ -69,9 +70,9 @@ export class ChampionsProvider {
     return this.validationRules;
   }
 
-  update(champion: any, id: any) {
+  update(champion: Champion) {
     return new Observable(obs => {
-      this.db.doc(`films/${id}`).update(champion);
+      this.db.doc(`champions/${champion.id}`).update(champion);
       obs.next();
     })
   }

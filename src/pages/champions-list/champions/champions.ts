@@ -1,3 +1,4 @@
+import { Champion } from './../../../app/types.d';
 import { ChampionsProvider } from './../../../providers/champions/champions';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
@@ -10,9 +11,23 @@ import { IonicPage, NavController, NavParams, AlertController, ToastController }
 export class ChampionsPage {
 
   update: boolean = false;
-  title: string;
+  validationRules: any = {};
+  errors: any = {};
   id: string;
-  champion: any;
+  title: string;
+  errorsLength = 0;
+  confirm: boolean;
+  champion: Champion = {
+    isWomen: null,
+    image: null,
+    name: null,
+    passive: null,
+    age: null,
+    skillQ: null,
+    skillE: null,
+    skillW: null,
+    skillR: null
+  };
 
   constructor(
     public navCtrl: NavController,
@@ -26,18 +41,36 @@ export class ChampionsPage {
     this.title = this.navParams.get('title');
     this.id = this.navParams.get('id');
     this.champion = this.Champions.getChampionById(this.id);
+    this.validationRules = this.Champions.getValidationRules();
   }
 
   onUpdate() {
-    this.Champions.update(this.champion.data, this.champion.id).subscribe(() => {
-      const toast = this.Toast.create({
-        message: "Vos changements ont été sauvegardés",
-        duration: 2000
-      });
+    this.validateFields();
+    this.errorsLength = Object.values(this.errors).length;
+    if (this.errorsLength <= 0) {
+      this.Champions.update(this.champion).subscribe(() => {
+        this.champion = {
+          isWomen: null,
+          image: null,
+          name: null,
+          passive: null,
+          age: null,
+          skillQ: null,
+          skillE: null,
+          skillW: null,
+          skillR: null
+        };
 
-      toast.present();
-      this.update = false;
-    })
+        const toast = this.Toast.create({
+          message: "Vos changements ont été sauvegardés",
+          duration: 2000
+        });
+
+        toast.present();
+        this.navCtrl.pop();
+        this.update = false;
+      });
+    }
   }
 
   onSupp() {
@@ -62,5 +95,16 @@ export class ChampionsPage {
     });
 
     alert.present();
+  }
+
+  validateFields() {
+    const champion = Object.entries(this.champion);
+    champion.forEach(field => {
+      if (this.validationRules[field[0]](field[1])) {
+        this.errors[field[0]] = true;
+      } else {
+        delete this.errors[field[0]];
+      }
+    });
   }
 }

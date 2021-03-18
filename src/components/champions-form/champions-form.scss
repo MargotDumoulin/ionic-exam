@@ -10,4 +10,13 @@ champions-form {
     object-fit: cover;
     border-radius: 30px;
   }
+
+  .item-error > div {
+    border-bottom: 1px solid red !important;
+  }
+
+  .item-valid > div {
+    border-bottom: 1px solid #dedede !important;
+    box-shadow: none !important;
+  }
 }

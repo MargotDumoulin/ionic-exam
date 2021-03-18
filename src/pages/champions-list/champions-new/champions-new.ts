@@ -1,7 +1,7 @@
 import { Champion } from './../../../app/types.d';
 import { ChampionsProvider } from './../../../providers/champions/champions';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -29,7 +29,8 @@ export class ChampionsNewPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private Champions: ChampionsProvider
+    private Champions: ChampionsProvider,
+    private Toast: ToastController
   ) {
     this.validationRules = this.Champions.getValidationRules();
   }
@@ -53,6 +54,12 @@ export class ChampionsNewPage {
           skillR: null
         };
 
+        const toast = this.Toast.create({
+          message: "Votre champion a été sauvegardé",
+          duration: 2000
+        });
+
+        toast.present();
         this.navCtrl.pop();
       });
     }

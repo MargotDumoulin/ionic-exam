@@ -23,4 +23,11 @@ page-champions {
     border-color: lightgrey;
     border: 1px;
   }
+
+  .confirm-button {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 15px;
+  }
 }
