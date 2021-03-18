@@ -2,7 +2,6 @@ import { Champion } from './../../../app/types.d';
 import { ChampionsProvider } from './../../../providers/champions/champions';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -11,9 +10,11 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ChampionsNewPage {
 
-  public championForm: FormGroup;
-
-  public champion: Champion = {
+  validationRules: any = {};
+  errors: any = {};
+  errorsLength = 0;
+  confirm: boolean;
+  champion: Champion = {
     isWomen: null,
     image: null,
     name: null,
@@ -28,36 +29,44 @@ export class ChampionsNewPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private Champion: ChampionsProvider,
-    private formBuilder: FormBuilder
+    private Champions: ChampionsProvider
   ) {
-    this.championForm = this.formBuilder.group({
-      isWomen: ['', Validators.required],
-      name: ['', Validators.required],
-      skillQ: ['', Validators.required],
-      skillW: ['', Validators.required],
-      skillE: ['', Validators.required],
-      skillR: ['', Validators.required],
-      age: ['', Validators.required]
-    })
+    this.validationRules = this.Champions.getValidationRules();
   }
 
   onAdd() {
-    this.Champion.saveNewChampion(this.champion).subscribe(() => {
-      this.champion = {
-        isWomen: null,
-        image: null,
-        name: null,
-        passive: null,
-        age: null,
-        skillQ: null,
-        skillE: null,
-        skillW: null,
-        skillR: null
-      };
+    this.validateFields();
+    this.errorsLength = Object.values(this.errors).length;
+    console.log(this.errors);
+    console.log(this.errorsLength);
+    if (this.errorsLength <= 0) {
+      this.Champions.saveNewChampion(this.champion).subscribe(() => {
+        this.champion = {
+          isWomen: null,
+          image: null,
+          name: null,
+          passive: null,
+          age: null,
+          skillQ: null,
+          skillE: null,
+          skillW: null,
+          skillR: null
+        };
 
-      this.navCtrl.pop();
-    })
+        this.navCtrl.pop();
+      });
+    }
+  }
+
+  validateFields() {
+    const champion = Object.entries(this.champion);
+    champion.forEach(field => {
+      if (this.validationRules[field[0]](field[1])) {
+        this.errors[field[0]] = true;
+      } else {
+        delete this.errors[field[0]];
+      }
+    });
   }
 
 }

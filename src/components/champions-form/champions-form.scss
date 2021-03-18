@@ -1,0 +1,13 @@
+champions-form {
+  .error-message {
+    color: red;
+    margin-left: 15px;
+  }
+
+  .champion-image {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 30px;
+  }
+}

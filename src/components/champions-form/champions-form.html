@@ -1,0 +1,102 @@
+<div>
+  <ion-item [ngClass]="{
+    'item-error': errors.name === true,
+    'item-valid': !errors.name
+  }">
+    <ion-label>Nom</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.name"></ion-input>
+  </ion-item>
+  <p class="error-message" *ngIf="errors.name">Vous devez rentrer un nom valide.</p>
+
+  <ion-item [ngClass]="{
+    'item-error': errors.age === true,
+    'item-valid': !errors.age
+  }">
+    <ion-label>Age</ion-label>
+    <ion-input type="number" [(ngModel)]="champion.age"></ion-input>
+  </ion-item>
+  <p class="error-message" *ngIf="errors.age">Vous devez rentrer un age valide.</p>
+
+  <ion-item [ngClass]="{
+    'item-error': errors.passive === true,
+    'item-valid': !errors.passive
+  }">
+    <ion-label>Passif</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.passive"></ion-input>
+  </ion-item>
+  <p class="error-message" *ngIf="errors.passive">Vous devez rentrer un passif valide.</p>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3 col-xl-1>
+        <img [src]="
+          champion.image
+          ? champion.image
+          : 'https://st3.depositphotos.com/6672868/13701/v/600/depositphotos_137014128-stock-illustration-user-profile-icon.jpg'"
+          class="champion-image"
+        />
+      </ion-col>
+      <ion-col col-9 col-xl-11>
+        <ion-item [ngClass]="{
+          'item-error': errors.image === true,
+          'item-valid': !errors.image
+        }">
+          <ion-label>Image</ion-label>
+          <ion-input type="text" [(ngModel)]="champion.image"></ion-input>
+        </ion-item>
+        <p class="error-message" *ngIf="errors.image">Vous devez rentrer une image valide.</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <br />
+
+  <ion-list radio-group [(ngModel)]="champion.isWomen">
+    <ion-item>
+      <ion-label>Homme</ion-label>
+      <ion-radio name="man" checked="true" value="false"></ion-radio>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Femme</ion-label>
+      <ion-radio name="woman" value="true"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <p class="error-message" *ngIf="errors.isWomen">Vous devez sélectionner un genre.</p>
+
+  <ion-item [ngClass]="{
+    'item-error': errors.skillQ === true,
+    'item-valid': !errors.skillQ
+  }">
+    <ion-label>Skill Q</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.skillQ"></ion-input>
+  </ion-item>
+  <p class="error-message" *ngIf="errors.skillQ">Vous devez rentrer un skill Q valide.</p>
+
+  <ion-item [ngClass]="{
+    'item-error': errors.skillW === true,
+    'item-valid': !errors.skillW
+  }">
+    <ion-label>Skill W</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.skillW"></ion-input>
+  </ion-item>
+  <p class="error-message" *ngIf="errors.skillW">Vous devez rentrer un skill W valide.</p>
+
+  <ion-item [ngClass]="{
+    'item-error': errors.skillE === true,
+    'item-valid': !errors.skillE
+  }">
+    <ion-label>Skill E</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.skillE"></ion-input>
+  </ion-item>
+  <p class="error-message" *ngIf="errors.skillE">Vous devez rentrer un skill E valide.</p>
+
+  <ion-item [ngClass]="{
+    'item-error': errors.skillR === true,
+    'item-valid': !errors.skillR
+  }">
+    <ion-label>Skill R</ion-label>
+    <ion-input type="text" [(ngModel)]="champion.skillR"></ion-input>
+  </ion-item>
+  <p class="error-message" *ngIf="errors.skillR">Vous devez rentrer un skill R valide.</p>
+</div>
