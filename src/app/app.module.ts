@@ -1,5 +1,6 @@
+import { Geolocation } from '@ionic-native/geolocation';
+import { LocationPageModule } from './../pages/location/location.module';
 import { ComponentsModule } from './../components/components.module';
-import { ChampionsFormComponent } from './../components/champions-form/champions-form';
 import { AboutPageModule } from './../pages/about/about.module';
 import { ChampionsNewPageModule } from './../pages/champions-list/champions-new/champions-new.module';
 import { ChampionsPageModule } from './../pages/champions-list/champions/champions.module';
@@ -41,7 +42,8 @@ const firebase = {
     AngularFirestoreModule,
     ChampionsNewPageModule,
     AboutPageModule,
-    ComponentsModule
+    ComponentsModule,
+    LocationPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +54,8 @@ const firebase = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ChampionsProvider
+    ChampionsProvider,
+    Geolocation
   ]
 })
 export class AppModule {}

@@ -38,8 +38,6 @@ export class ChampionsNewPage {
   onAdd() {
     this.validateFields();
     this.errorsLength = Object.values(this.errors).length;
-    console.log(this.errors);
-    console.log(this.errorsLength);
     if (this.errorsLength <= 0) {
       this.Champions.saveNewChampion(this.champion).subscribe(() => {
         this.champion = {

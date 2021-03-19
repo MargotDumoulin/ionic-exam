@@ -1,3 +1,4 @@
+import { LocationPage } from './../location/location';
 import { AboutPage } from './../about/about';
 import { ChampionsListPage } from './../champions-list/champions-list';
 import { HomePage } from './../home/home';
@@ -14,6 +15,7 @@ export class TabPage {
   home = HomePage;
   champions = ChampionsListPage;
   about = AboutPage;
+  location = LocationPage;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

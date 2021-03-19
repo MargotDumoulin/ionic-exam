@@ -9,4 +9,9 @@ export type Champion = {
   skillE: string;
   skillR: string;
   passive: string;
-}
+};
+
+export type Coords = {
+  lat: number;
+  long: number;
+};

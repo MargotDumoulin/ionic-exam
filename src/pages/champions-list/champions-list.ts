@@ -21,7 +21,8 @@ export class ChampionsListPage implements OnInit {
   ngOnInit() {
     this.championsSubscription = this.Champions.championsSubject.subscribe(listChampions => {
       this.champions = listChampions;
-    })
+    });
+    this.Champions.emitChampionsSubject();
   }
 
   onGoToCreate() {
@@ -30,6 +31,10 @@ export class ChampionsListPage implements OnInit {
 
   onGoToFilm(filmTitle: string, _id: string) {
     this.navCtrl.push(ChampionsPage, { title: filmTitle, id: _id });
+  }
+
+  ngOnDestroy() {
+    this.championsSubscription.unsubscribe();
   }
 
 }
