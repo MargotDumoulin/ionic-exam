@@ -14,7 +14,6 @@ export class ChampionsPage {
   validationRules: any = {};
   errors: any = {};
   id: string;
-  title: string;
   errorsLength = 0;
   confirm: boolean;
   champion: Champion = {
@@ -38,9 +37,10 @@ export class ChampionsPage {
   ) {}
 
   ngOnInit() {
-    this.title = this.navParams.get('title');
     this.id = this.navParams.get('id');
+    console.log(this.id);
     this.champion = this.Champions.getChampionById(this.id);
+    console.log(this.champion);
     this.validationRules = this.Champions.getValidationRules();
   }
 

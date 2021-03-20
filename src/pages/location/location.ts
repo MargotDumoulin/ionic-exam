@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Geolocation, Geoposition } from '@ionic-native/geolocation';
 
 import L from 'leaflet';
@@ -18,8 +18,9 @@ export class LocationPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private geolocation: Geolocation)
-  {}
+    private geolocation: Geolocation,
+    private Toast: ToastController
+  ) {}
 
   ngOnInit() {
     this.map = L.map('map', {
@@ -44,8 +45,11 @@ export class LocationPage {
         this.map.addLayer(marker);
 
       }).catch((error) => {
-        // TODO: put a toaster!!
-          console.log('Error getting location', error);
+        const toast = this.Toast.create({
+          message: "Une erreur est survenue.",
+          duration: 2000
+        });
+        console.log('Error getting location', error);
       });
 
     const watch = this.geolocation.watchPosition();
