@@ -1,4 +1,4 @@
-import { Champion } from './../../app/types.d';
+import { Champion } from '../../app/types';
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { AngularFirestore } from 'angularfire2/firestore';
@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class ChampionsProvider {
+export class ChampionProvider {
 
   private champions: any = [];
   private validationRules: any = {
@@ -23,16 +23,14 @@ export class ChampionsProvider {
     id: () => false // skip id validation :p
   };
 
-  championsSubject = new Subject<any[]>();
+  championSubject = new Subject<any[]>();
 
-  constructor(
-    private db: AngularFirestore
-  ) {
+  constructor(private db: AngularFirestore) {
     this.getAllChampions();
   }
 
   emitChampionsSubject() {
-    this.championsSubject.next(this.champions.slice());
+    this.championSubject.next(this.champions.slice());
   }
 
   getChampionById(id: string) {

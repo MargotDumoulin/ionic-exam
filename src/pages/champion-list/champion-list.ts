@@ -1,16 +1,16 @@
-import { ChampionsProvider } from './../../providers/champions/champions';
-import { ChampionsPage } from './champions/champions';
+import { ChampionProvider } from '../../providers/champion/champion';
+import { ChampionPage } from './champion/champion';
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
-import { ChampionsNewPage } from './champions-new/champions-new';
+import { ChampionNewPage } from './champion-new/champion-new';
 import { Subscription } from 'rxjs/Subscription';
 
 @IonicPage()
 @Component({
-  selector: 'page-champions-list',
-  templateUrl: 'champions-list.html',
+  selector: 'page-champion-list',
+  templateUrl: 'champion-list.html',
 })
-export class ChampionsListPage implements OnInit {
+export class ChampionListPage implements OnInit {
 
   champions: any = [];
   championsSubscription: Subscription;
@@ -19,28 +19,29 @@ export class ChampionsListPage implements OnInit {
     public navCtrl: NavController,
     public navParams: NavParams,
     public loadingController: LoadingController,
-    private Champions: ChampionsProvider
+    private Champion: ChampionProvider
   ) {}
 
   ngOnInit() {
+    // Display a loading message while champions are being load
     const loading = this.loadingController.create({
       cssClass: 'my-custom-class',
       content: 'Les champions sont en train d\'être chargés...',
       duration: 2000
     });
     loading.present();
-    this.championsSubscription = this.Champions.championsSubject.subscribe(listChampions => {
+    this.championsSubscription = this.Champion.championSubject.subscribe(listChampions => {
       this.champions = listChampions;
     });
-    this.Champions.emitChampionsSubject();
+    this.Champion.emitChampionsSubject();
   }
 
   onGoToCreate() {
-    this.navCtrl.push(ChampionsNewPage);
+    this.navCtrl.push(ChampionNewPage);
   }
 
   onGoToChampion(_id: string) {
-    this.navCtrl.push(ChampionsPage, { id: _id });
+    this.navCtrl.push(ChampionPage, { id: _id });
   }
 
   ngOnDestroy() {

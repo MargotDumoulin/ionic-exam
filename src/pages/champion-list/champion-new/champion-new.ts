@@ -1,14 +1,14 @@
-import { Champion } from './../../../app/types.d';
-import { ChampionsProvider } from './../../../providers/champions/champions';
+import { Champion } from '../../../app/types';
+import { ChampionProvider } from '../../../providers/champion/champion';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-champions-new',
-  templateUrl: 'champions-new.html',
+  selector: 'page-champion-new',
+  templateUrl: 'champion-new.html',
 })
-export class ChampionsNewPage {
+export class ChampionNewPage {
 
   validationRules: any = {};
   errors: any = {};
@@ -29,17 +29,17 @@ export class ChampionsNewPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    private Champions: ChampionsProvider,
+    private Champion: ChampionProvider,
     private Toast: ToastController
   ) {
-    this.validationRules = this.Champions.getValidationRules();
+    this.validationRules = this.Champion.getValidationRules();
   }
 
   onAdd() {
     this.validateFields();
     this.errorsLength = Object.values(this.errors).length;
     if (this.errorsLength <= 0) {
-      this.Champions.saveNewChampion(this.champion).subscribe(() => {
+      this.Champion.saveNewChampion(this.champion).subscribe(() => {
         this.champion = {
           isWomen: null,
           image: null,
@@ -53,7 +53,7 @@ export class ChampionsNewPage {
         };
 
         const toast = this.Toast.create({
-          message: "Votre champion a été sauvegardé",
+          message: "Votre champion a été sauvegardé.",
           duration: 2000
         });
 
@@ -63,6 +63,8 @@ export class ChampionsNewPage {
     }
   }
 
+  // Check each field with a its dedicated validation rule
+  // Register an error in errors array if there is one
   validateFields() {
     const champion = Object.entries(this.champion);
     champion.forEach(field => {

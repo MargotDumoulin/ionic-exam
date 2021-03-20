@@ -1,14 +1,14 @@
-import { Champion } from './../../../app/types.d';
-import { ChampionsProvider } from './../../../providers/champions/champions';
+import { Champion } from '../../../app/types';
+import { ChampionProvider } from '../../../providers/champion/champion';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-champions',
-  templateUrl: 'champions.html',
+  selector: 'page-champion',
+  templateUrl: 'champion.html',
 })
-export class ChampionsPage {
+export class ChampionPage {
 
   update: boolean = false;
   validationRules: any = {};
@@ -32,23 +32,21 @@ export class ChampionsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    private Champions: ChampionsProvider,
+    private Champion: ChampionProvider,
     private Toast: ToastController
   ) {}
 
   ngOnInit() {
     this.id = this.navParams.get('id');
-    console.log(this.id);
-    this.champion = this.Champions.getChampionById(this.id);
-    console.log(this.champion);
-    this.validationRules = this.Champions.getValidationRules();
+    this.champion = this.Champion.getChampionById(this.id);
+    this.validationRules = this.Champion.getValidationRules();
   }
 
   onUpdate() {
     this.validateFields();
     this.errorsLength = Object.values(this.errors).length;
     if (this.errorsLength <= 0) {
-      this.Champions.update(this.champion).subscribe(() => {
+      this.Champion.update(this.champion).subscribe(() => {
         this.champion = {
           isWomen: null,
           image: null,
@@ -73,15 +71,39 @@ export class ChampionsPage {
     }
   }
 
-  onSupp() {
-    this.Champions.delete(this.champion.id)
-    this.navCtrl.pop();
+  onDelete() {
+    const alert = this.alertCtrl.create({
+      title: "Supprimer ce champion",
+      subTitle: "Êtes-vous certain de vouloir supprimer ce champion ?",
+      buttons: [
+        {
+          text: 'Annuler',
+          role: 'Cancel'
+        },
+        {
+          text: 'Confirmer',
+          handler: () => {
+            this.Champion.delete(this.champion.id);
+            const toast = this.Toast.create({
+              message: "Le champion a été supprimé.",
+              duration: 2000
+            });
+
+            toast.present();
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+
+    alert.present();
   }
 
-  onGoAccessUpdate() {
+  // Allows the user to access the modification form
+  onGoToUpdate() {
     const alert = this.alertCtrl.create({
-      title: "Etes-vous sûr de vouloir modifier ?",
-      subTitle: "Vous rendrez possible la modification",
+      title: "Modifier ce champion",
+      subTitle: "Êtes-vous certain de vouloir modifier ce champion ?",
       buttons: [
         {
           text: 'Annuler',
@@ -97,6 +119,8 @@ export class ChampionsPage {
     alert.present();
   }
 
+  // Check each field with a its dedicated validation rule
+  // Register an error in errors array if there is one
   validateFields() {
     const champion = Object.entries(this.champion);
     champion.forEach(field => {

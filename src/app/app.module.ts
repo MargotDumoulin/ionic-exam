@@ -2,9 +2,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { LocationPageModule } from './../pages/location/location.module';
 import { ComponentsModule } from './../components/components.module';
 import { AboutPageModule } from './../pages/about/about.module';
-import { ChampionsNewPageModule } from './../pages/champions-list/champions-new/champions-new.module';
-import { ChampionsPageModule } from './../pages/champions-list/champions/champions.module';
-import { ChampionsListPageModule } from './../pages/champions-list/champions-list.module';
+import { ChampionNewPageModule } from '../pages/champion-list/champion-new/champion-new.module';
+import { ChampionPageModule } from '../pages/champion-list/champion/champion.module';
+import { ChampionListPageModule } from '../pages/champion-list/champion-list.module';
 import { TabPageModule } from './../pages/tab/tab.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -13,7 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ChampionsProvider } from '../providers/champions/champions';
+import { ChampionProvider } from '../providers/champion/champion';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
@@ -36,11 +36,11 @@ const firebase = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     TabPageModule,
-    ChampionsListPageModule,
-    ChampionsPageModule,
+    ChampionListPageModule,
+    ChampionPageModule,
     AngularFireModule.initializeApp(firebase),
     AngularFirestoreModule,
-    ChampionsNewPageModule,
+    ChampionNewPageModule,
     AboutPageModule,
     ComponentsModule,
     LocationPageModule
@@ -54,7 +54,7 @@ const firebase = {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ChampionsProvider,
+    ChampionProvider,
     Geolocation
   ]
 })

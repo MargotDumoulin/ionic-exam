@@ -1,6 +1,6 @@
 import { LocationPage } from './../location/location';
 import { AboutPage } from './../about/about';
-import { ChampionsListPage } from './../champions-list/champions-list';
+import { ChampionListPage } from '../champion-list/champion-list';
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
@@ -13,11 +13,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class TabPage {
 
   home = HomePage;
-  champions = ChampionsListPage;
+  champions = ChampionListPage;
   about = AboutPage;
   location = LocationPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
 }

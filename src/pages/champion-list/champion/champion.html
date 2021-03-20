@@ -7,10 +7,10 @@
 
 <ion-content padding>
   <ion-fab bottom right>
-    <button ion-fab color="primary" (click)="onGoAccessUpdate()"><ion-icon name="create"></ion-icon></button>
+    <button ion-fab color="primary" (click)="onGoToUpdate()"><ion-icon name="create"></ion-icon></button>
   </ion-fab>
   <ion-fab bottom left>
-    <button ion-fab color="secondary" (click)="onSupp()"><ion-icon name="trash"></ion-icon></button>
+    <button ion-fab color="secondary" (click)="onDelete()"><ion-icon name="trash"></ion-icon></button>
   </ion-fab>
 
   <div *ngIf="!update">
@@ -31,7 +31,7 @@
           <ion-icon *ngIf="champion.isWomen"  class="pink-icon" name="woman"></ion-icon>
           <ion-icon *ngIf="!champion.isWomen" class="blue-icon" name="man"></ion-icon><br/>
           <strong>Age :</strong>
-          {{ champion.age }}<br/>
+          {{ champion.age + ' ans' }}<br/>
           <strong>Skill Q :</strong>
           {{ champion.skillQ }}<br/>
           <strong>Skill W :</strong>
@@ -46,7 +46,7 @@
   </div>
 
   <div *ngIf="update">
-    <champions-form [champion]="champion" [errors]="errors"></champions-form>
+    <champion-form [champion]="champion" [errors]="errors"></champion-form>
     <br />
     <div class="confirm-button">
       <button ion-button (click)="onUpdate()">Modifier</button>

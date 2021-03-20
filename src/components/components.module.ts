@@ -1,14 +1,14 @@
 import { IonicModule } from 'ionic-angular';
 import { NgModule } from '@angular/core';
-import { ChampionsFormComponent } from './champions-form/champions-form';
+import { ChampionFormComponent } from './champion-form/champion-form';
 import { CommonModule } from '@angular/common';
 
 @NgModule({
-	declarations: [ChampionsFormComponent],
+	declarations: [ChampionFormComponent],
 	imports: [
     CommonModule,
     IonicModule
   ],
-	exports: [ChampionsFormComponent]
+	exports: [ChampionFormComponent]
 })
 export class ComponentsModule {}
