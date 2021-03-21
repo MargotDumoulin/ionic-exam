@@ -6,10 +6,10 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-fab bottom right>
+  <ion-fab *ngIf="!update" bottom right>
     <button ion-fab color="primary" (click)="onGoToUpdate()"><ion-icon name="create"></ion-icon></button>
   </ion-fab>
-  <ion-fab bottom left>
+  <ion-fab *ngIf="!update" bottom left>
     <button ion-fab color="secondary" (click)="onDelete()"><ion-icon name="trash"></ion-icon></button>
   </ion-fab>
 
@@ -28,8 +28,8 @@
       <ion-row>
         <ion-col col-12>
           <strong>Genre: </strong>
-          <ion-icon *ngIf="champion.isWomen"  class="pink-icon" name="woman"></ion-icon>
-          <ion-icon *ngIf="!champion.isWomen" class="blue-icon" name="man"></ion-icon><br/>
+          <ion-icon *ngIf="champion.isWomen === true"  class="pink-icon" name="woman"></ion-icon>
+          <ion-icon *ngIf="champion.isWomen === false" class="blue-icon" name="man"></ion-icon><br/>
           <strong>Age :</strong>
           {{ champion.age + ' ans' }}<br/>
           <strong>Skill Q :</strong>

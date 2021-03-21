@@ -54,12 +54,12 @@
   <ion-list radio-group [(ngModel)]="champion.isWomen">
     <ion-item>
       <ion-label>Homme</ion-label>
-      <ion-radio name="man" checked="true" value="false"></ion-radio>
+      <ion-radio name="man" checked="true" [value]="false"></ion-radio>
     </ion-item>
 
     <ion-item>
       <ion-label>Femme</ion-label>
-      <ion-radio name="woman" value="true"></ion-radio>
+      <ion-radio name="woman" [value]="true"></ion-radio>
     </ion-item>
   </ion-list>
   <p class="error-message" *ngIf="errors.isWomen">Vous devez sélectionner un genre.</p>

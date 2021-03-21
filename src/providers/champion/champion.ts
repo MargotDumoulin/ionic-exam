@@ -33,7 +33,7 @@ export class ChampionProvider {
     this.championSubject.next(this.champions.slice());
   }
 
-  getChampionById(id: string) {
+  getChampionById(id: string): Champion {
     for (const champion of this.champions) {
       if (champion.id == id) return champion;
     }
