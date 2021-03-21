@@ -38,7 +38,7 @@ export class ChampionPage {
 
   ngOnInit() {
     this.id = this.navParams.get('id');
-    this.champion = this.Champion.getChampionById(this.id);
+    this.champion = { ...this.Champion.getChampionById(this.id) };
     this.validationRules = this.Champion.getValidationRules();
   }
 
