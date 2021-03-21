@@ -48,6 +48,19 @@ export class LocationPage {
         const marker = new L.Marker([this.coordinates.lat, this.coordinates.long]);
         this.map.addLayer(marker);
 
+        // watch position updates
+        const watch = this.geolocation.watchPosition();
+        watch.subscribe((data: Geoposition) => {
+          this.coordinates = {
+            lat: data.coords.latitude,
+            long: data.coords.longitude
+          };
+
+          // Add new marker + move center when the user moves :)
+          this.map.panTo(new L.LatLng(this.coordinates.lat, this.coordinates.long));
+          const marker = new L.Marker([this.coordinates.lat, this.coordinates.long]);
+          this.map.addLayer(marker);
+        });
       }).catch((error) => {
         const toast = this.Toast.create({
           message: "Une erreur est survenue.",
@@ -57,20 +70,6 @@ export class LocationPage {
 
         console.log('Error getting location', error);
       });
-
-    // watch position updates
-    const watch = this.geolocation.watchPosition();
-    watch.subscribe((data: Geoposition) => {
-      this.coordinates = {
-        lat: data.coords.latitude,
-        long: data.coords.longitude
-      };
-
-      // Add new marker + move center when the user moves :)
-      this.map.panTo(new L.LatLng(this.coordinates.lat, this.coordinates.long));
-      const marker = new L.Marker([this.coordinates.lat, this.coordinates.long]);
-      this.map.addLayer(marker);
-    });
 
     // Show map layer
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
